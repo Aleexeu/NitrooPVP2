@@ -90,4 +90,4 @@ let args = message.content.split(" ").slice(1)
 });
 
 // THIS  MUST  BE  THIS  WAY
-client.login(process.env.BOT_TOKEN);
+bot.login(process.env.BOT_TOKEN);
