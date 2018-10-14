@@ -29,6 +29,7 @@ bot.on('message', message => {
     if (message.content.startsWith('/beijar')){
        
         let user = message.mentions.users.first();
+        if(message.channel.id !== '500821240869814272') return message.channel.send('você não pode usar comandos aqui, vai em <#500821240869814272> e digite o comando!');
         if(!user) return message.channel.send('Você precisa mencionar alguém para beijar!');
         let gifs = ['https://media.giphy.com/media/1BcfiGlOGXzQ5xU4DA/giphy.gif'] 
         let random = Math.round(Math.random() * gifs.length);
