@@ -27,7 +27,6 @@ bot.on('message', message => {
         message.channel.send('https://www.youtube.com/channel/UCNx4oMYW8osf3ea2wfEd5pg');
     }
     if (message.content.startsWith('/beijar')){
-       
         let user = message.mentions.users.first();
         if(message.channel.id !== '500821240869814272') return message.channel.send('você não pode usar comandos aqui, vai em <#500821240869814272> e digite o comando!');
         if(!user) return message.channel.send('Você precisa mencionar alguém para beijar!');
