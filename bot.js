@@ -29,13 +29,14 @@ bot.on('message', message => {
     if (message.content.startsWith('/modd')){
         message.channel.send('http://www.modd.io/');
     }
-    if (message.content.startsWith('/teste')){
+    if (message.content.startsWith('/canal')){
         if(message.channel.id !== '500821240869814272') return message.channel.send('você não pode usar comandos aqui, vai em <#500821240869814272> e digite o comando!');
         message.channel.send('https://www.youtube.com/channel/UCNx4oMYW8osf3ea2wfEd5pg');
     }
     if (message.content.startsWith('/beijar')){
        
         let user = message.mentions.users.first();
+        if(message.channel.id !== '500821240869814272') return message.channel.send('você não pode usar comandos aqui, vai em <#500821240869814272> e digite o comando!');
         if(!user) return message.channel.send('Você precisa mencionar alguém para beijar!');
         let gifs = ['https://media.giphy.com/media/1BcfiGlOGXzQ5xU4DA/giphy.gif'] 
         let random = Math.round(Math.random() * gifs.length);
@@ -47,6 +48,7 @@ bot.on('message', message => {
             message.channel.send(embed);
          }
     if (message.content.startsWith('/roleta')){
+        if(message.channel.id !== '500821240869814272') return message.channel.send('você não pode usar comandos aqui, vai em <#500821240869814272> e digite o comando!');
         let a = ['Voce foi execultado! a bala foi certeira.', 'Voce teve sorte! a bala nao foi disparada.']
         let b = Math.floor(Math.random() * a.length)
          message.reply(a[b])
