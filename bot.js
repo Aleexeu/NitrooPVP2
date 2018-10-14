@@ -2,17 +2,6 @@ const Discord = require('discord.js');
 const bot = new Discord.Client();
 
 
-function changing_status() {
-    let status = ['minecraft', 'fortnite', 'e beijando']
-    let random = status[Math.floor(Math.random() * status.length)]
-    bot.user.setActivity(random)
-}
-
-bot.on("ready", () => {
-    console.log( '-' );
-    setInterval(changing_status, 9000);
-})
-
 bot.on('guildMemberAdd', member => {
     const randomColor = "#000000".replace(/0/g, function () { return (~~(Math.random() * 16)).toString(16); });
    
