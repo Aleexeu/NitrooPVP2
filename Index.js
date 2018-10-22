@@ -3,19 +3,19 @@ const bot = new Discord.Client();
 
 
 bot.on('ready', () => {
-    bot.user.setPresence({ game: { name: `braains.io`, type: 1, url: 'https://www.youtube.com/yRecky'} });
+    bot.user.setPresence({ game: { name: `sla`, type: 1, url: 'https://www.youtube.com/yRecky'} });
     console.log('Logado');
 });
 bot.on('message', message => {
     if (message.content.startsWith('/twitter')){
-        message.channel.send('Twitter:  https://twitter.com/NitrooC');
+        message.channel.send('Twitter:  NitrooPVP@sla');
     }
 });
 bot.on('message', message => {
     let arraymsg = message.content.split(" ");
 let cmd = arraymsg[0].toLowerCase()
 let args = message.content.split(" ").slice(1);
-if(cmd === '!!anuncio'){
+if(cmd === '/anuncio'){
     const args = message.content.split(" ").slice(1);
     const prefix = '/'
     message.delete()
@@ -34,7 +34,7 @@ bot.on('message', message => {
     let arraymsg = message.content.split(" ");
 let cmd = arraymsg[0].toLowerCase()
 let args = message.content.split(" ").slice(1)
-    if(cmd === '!!ban'){
+    if(cmd === '/ban'){
         const args = message.content.split(" ").slice(1);
         var razao = args.slice(1).join(" ")
             var membro = message.mentions.members.first();
@@ -47,5 +47,4 @@ let args = message.content.split(" ").slice(1)
       }
 });
 
-// THIS  MUST  BE  THIS  WAY
 bot.login(process.env.BOT_TOKEN);
