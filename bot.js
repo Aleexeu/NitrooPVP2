@@ -54,4 +54,5 @@ client.on("message", async message => {
 }
 });
 
-client.login(config.token);
+// THIS  MUST  BE  THIS  WAY
+client.login(process.env.BOT_TOKEN);
