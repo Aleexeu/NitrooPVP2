@@ -1,50 +1,65 @@
-const Discord = require('discord.js');
-const bot = new Discord.Client();
+const Discord = require("discord.js");
+const client = new Discord.Client(); 
+const config = require("./config.json"); 
 
 
-bot.on('ready', () => {
-    bot.user.setPresence({ game: { name: `sla`, type: 1, url: 'https://www.youtube.com/yRecky'} });
-    console.log('Logado');
+client.on("ready", () => {
+  console.log(`Bot foi iniciado, com ${client.users.size} usuários, em ${client.channels.size} canais, em ${client.guilds.size} servidores.`); 
+  client.user.setActivity(`Eu estou em ${client.guilds.size} servidores`);
+// caso queira o bot trasmitindo use:
+/*
+   client.user.setPresence({ game: { name: 'comando', type: 1, url: 'https://www.twitch.tv/ladonegro'} });
+    //0 = Jogando
+    //  1 = Transmitindo
+    //  2 = Ouvindo
+    //  3 = Assistindo
+      */
 });
-bot.on('message', message => {
-    if (message.content.startsWith('/twitter')){
-        message.channel.send('Twitter:  NitrooPVP@sla');
-    }
+
+client.on("guildCreate", guild => {
+  console.log(`O bot entrou nos servidor: ${guild.name} (id: ${guild.id}). População: ${guild.memberCount} membros!`);
+  client.user.setActivity(`Estou em ${client.guilds.size} servidores`);
 });
-bot.on('message', message => {
-    let arraymsg = message.content.split(" ");
-let cmd = arraymsg[0].toLowerCase()
-let args = message.content.split(" ").slice(1);
-if(cmd === '/anuncio'){
-    const args = message.content.split(" ").slice(1);
-    const prefix = '/'
-    message.delete()
-    if (!args.slice(0).join(' ')) return message.channel.send('test')
-    message.channel.send({embed:{
-        'description':args.slice(0).join(' ')
-        ,'color':message.member.highestRole.color,
-        "thumbnail":{
-            }
-        }
-    }
-    )
+
+client.on("guildDelete", guild => {
+  console.log(`O bot foi removido do servidor: ${guild.name} (id: ${guild.id})`);
+  client.user.setActivity(`Estou em ${client.guilds.size} servidores`);
+});
+
+
+client.on("message", async message => {
+
+    if(message.author.bot) return;
+    if(message.channel.type === "dm") return;
+    if(!message.content.startsWith(config.prefix)) return;
+
+  const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
+  const comando = args.shift().toLowerCase();
+  
+  if(comando === "formulário") {
+    const m = await message.channel.send("Caguei pro formulário");
+  }
+  if(comando === "say") { 
+    if(!message.member.hasPermissions("BAN_MEMBERS")) return message.reply("você não tem permissão de usar esse comando")
+    const sayMessage = args.join(" ");
+    message.delete().catch(O_o=>{});
+    message.channel.send(sayMessage);
+  }
+  if(comando === "changelog") {
+    if(!message.member.hasPermissions("BAN_MEMBERS")) return message.reply("você não tem permissão de usar esse comando")
+      message.delete().catch(O_o=>{});
+       if (!args.slice(0).join(' ')) return message.reply('Diga o conteudo da changelog!')
+       message.channel.send({embed:{
+      'title':':book: CHANGELOG - SPACE NETWORK :book:',
+      'description':args.slice(0).join(' ')
+      ,'color':message.member.highestRole.color,
+      "thumbnail":{
+        url: 'https://minotar.net/bust/JonhyPedraBR/100.png'
+          }
+       }}).then(m =>{
+       m.react(e1).then(m.react(e2))
+  })
 }
 });
-bot.on('message', message => {
-    let arraymsg = message.content.split(" ");
-let cmd = arraymsg[0].toLowerCase()
-let args = message.content.split(" ").slice(1)
-    if(cmd === '/ban'){
-        const args = message.content.split(" ").slice(1);
-        var razao = args.slice(1).join(" ")
-            var membro = message.mentions.members.first();
-            if(!message.member.hasPermissions("BAN_MEMBERS")) return message.reply("você não tem permissão de usar esse comando")
-            if(!membro) return message.reply("você não mencinou ninguém")
-            if(!membro.bannable) return message.reply("Você não pode banir essa pessoa")
-            if(razao.length < 1) return message.reply("Coloque um motivo!")
-            membro.ban()
-            message.channel.send(`O membro ${membro.user.username} foi banido do servidor.\nMotivo: ${razao}`)
-      }
-});
 
-bot.login(process.env.BOT_TOKEN);
+client.login(config.token);
