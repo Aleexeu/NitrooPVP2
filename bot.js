@@ -3,8 +3,9 @@ const client = new Discord.Client();
 const config = require("./config.json"); 
 
 
-client.on("ready", () => {
-  console.log(`Bot foi iniciado, com ${client.users.size} usuários, em ${client.channels.size} canais, em ${client.guilds.size} servidores.`); 
+client.on('ready', () => {
+    client.user.setPresence({ game: { name: `» IP: Em desenvolvimento!`, type: 1, url: 'https://www.youtube.com/yRecky'} });
+    console.log('Logado');
 });
 
 client.on("guildCreate", guild => {
