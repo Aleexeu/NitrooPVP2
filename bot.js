@@ -62,4 +62,4 @@ client.on("message", async message => {
 }
 });
 
-bot.login(process.TOKEN);
+client.login(config.token);
