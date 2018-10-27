@@ -29,7 +29,7 @@ client.on("message", async message => {
   const comando = args.shift().toLowerCase();
   
   if(comando === "formulário") {
-    const m = await message.channel.send("Aqui e stá: https://adflyk.com/k9BTbz");
+    const m = await message.channel.send("Aqui está: https://adflyk.com/k9BTbz");
   }
   if(comando === "say") { 
     if(!message.member.hasPermissions("BAN_MEMBERS")) return message.reply("você não tem permissão de usar esse comando")
