@@ -33,6 +33,18 @@ fs.readdir("./comandos", (err, files) => {
     });
 });
 
+bot.on("ready", () => {
+    let img = [ "https://cdn.discordapp.com/attachments/508655726428815396/508700370210390048/minecraft.png", "https://cdn.discordapp.com/attachments/508655726428815396/508701383189463040/785926.png" ];
+    
+      function setImg() {
+          let randomImage = img[Math.floor(Math.random() * img.length)];
+          bot.user.setAvatar(randomImage);
+      }
+    
+      setImg();
+      setInterval(() => setImg(), 10000); //30000 = 30s
+    });
+
 bot.on('ready', () =>{
     let status = [
         {name: 'a melhor loja SlimeMC', type: 'STREAMING', url: 'https://twitch.tv/biscoito'},
