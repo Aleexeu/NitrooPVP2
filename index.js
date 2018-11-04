@@ -64,7 +64,7 @@ bot.on('ready', () =>{
         }
       
         setStatus();
-        setInterval(() => setStatus(), 10000);  //10000 = 10Ms = 10 segundos
+        setInterval(() => setStatus(), 30000);  //30000 = 30Ms = 30 segundos
 });
 
 bot.on('message', message => {
