@@ -7,6 +7,7 @@ var razao = args.slice(2).join(" ")
   if(!tomute) return message.reply("Não foi possível encontrar o usuário.");
   if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send("Infelizmente você não tem permissão!");
   let muterole = message.guild.roles.find(`name`, "Silenciado");
+  message.delete();
   if(!muterole){
     try{
       muterole = await message.guild.createRole({
