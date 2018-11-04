@@ -35,7 +35,7 @@ fs.readdir("./comandos", (err, files) => {
 
 bot.on('ready', () =>{
     let status = [
-        {name: 'a melhor loja para (tanto membros do grupo)', type: 'STREAMING', url: 'https://twitch.tv/biscoito'},
+        {name: 'a melhor loja SlimeMC', type: 'STREAMING', url: 'https://twitch.tv/biscoito'},
         {name: 'músicas', type: 'LISTENING'},
         {name: 'e comprando na SlimeMC', type: 'PLAYING'},
         {name: 'compras na SlimeMC', type: 'WATCHING'},
