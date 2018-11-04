@@ -1,7 +1,8 @@
 const Discord = require("discord.js");
 
 exports.run = (client, message, args) => {
-if (!args.slice(0).join(' ')) return message.reply('Diga o conteudo da votaçao!')
+    if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send("Infelizmente você não tem permissão!");
+    if (!args.slice(0).join(' ')) return message.reply('Diga o conteudo da votaçao!')
     message.delete()
     message.channel.send('@everyone | @here')
     message.channel.send({embed:{
