@@ -10,10 +10,8 @@ module.exports.run = async (bot, message, args) => {
     let banEmbed = new Discord.RichEmbed()
     .setDescription("BAN")
     .setColor("#bc0000")
-    .addField("Usuário banido:", `${bUser} ID ${bUser.id}`)
-    .addField("Staff que baniu:", `<@${message.author.id}> ID ${message.author.id}`)
-    .addField("Banido no chat:", message.channel)
-    .addField("Time", message.createdAt)
+    .addField("Usuário banido:", `${bUser}`)
+    .addField("Staff que baniu:", `<@${message.author.id}>`)
     .addField("Motivo:", bReason);
 
     let incidentchannel = message.guild.channels.find(`name`, "🚫punições");
