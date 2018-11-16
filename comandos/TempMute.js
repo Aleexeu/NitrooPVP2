@@ -28,7 +28,7 @@ var razao = args.slice(2).join(" ")
 
   let mutetime = args[1];
   if(!mutetime) return message.reply("Você não especificou um tempo!");
-  var canal = message.guild.channels.find("name", "🚫punições");
+  var canal = message.guild.channels.find("name", "punishments");
   if (!canal) return; canal.send({
 embed: { 
 description:`:mute: Membro Silenciado.\nUsuário mutado com sucesso!\n \n \n:beginner: Autor:\n<@${message.author.id}>\n \n:bust_in_silhouette:  Usuário:\n<@${tomute.id}>\n \n:clock3: Duração:\n${ms(ms(mutetime))}\n \n:pencil: Motivo:\n ${razao}`, 
